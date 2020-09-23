@@ -1,0 +1,78 @@
+-- For creating new member positions
+-- INSERT INTO Member_Position (position, privilege, description, first_added, last_updated, email_address)
+--     VALUES('Big Boss',
+--            3,
+--            'Has full admin rights to the website for troubleshooting and development purposes.',
+--            datetime('now'),
+--            datetime('now'),
+--            'jgwesterfield@gmail.com');
+
+-- For creating new members
+-- INSERT INTO Member (
+--                     first_name,
+--                     last_name,
+--                     position_id,
+--                     phone_num,
+--                     email_address,
+--                     username,
+--                     password,
+--                     current_member
+--                     )
+--                     VALUES (
+--                             'Jonathan',
+--                             'Westerfield',
+--                             7,
+--                             '713-253-6097',
+--                             'jgwesterfield@gmail.com',
+--                             'jgwesterfield',
+--                             'yeeterino2k19',
+--                             true
+--                              );
+
+-- For creating new items
+-- INSERT INTO Item (
+--                   name,
+--                   quantity,
+--                   capacity,
+--                   last_updated,
+--                   first_added,
+--                   removed
+--                   )
+--                   VALUES ('yeet',
+--                           0,
+--                           200,
+--                           datetime('now'),
+--                           datetime('now'),
+--                           false
+--                           );
+
+-- For creating new transactions
+-- INSERT INTO Order_Transaction (
+--                                member_id,
+--                                item_id,
+--                                item_quantity_change,
+--                                transaction_date,
+--                                comment)
+--                                VALUES (
+--                                        1,
+--                                        1,
+--                                        10,
+--                                        datetime('now'),
+--                                        'Fourth test transaction'
+--                                       );
+
+
+-- select SUM(item_quantity_change) from Order_Transaction WHERE item_id = 1;
+
+-- (HAVEN'T FIGURED THIS OUT YET) Trigger for auto updating the item quantities for the Item table
+-- CREATE TRIGGER item_quantity_update AFTER INSERT ON Order_Transaction
+-- BEGIN
+--     UPDATE Item
+--         SET Item.quantity=(SELECT SUM(item_quantity_change) FROM Order_Transaction WHERE item_id = Item.id);
+--     UPDATE Item
+--         SET Item.last_updated=datetime('now') WHERE Item.id=item_id;
+-- END;
+
+-- update Member_Position
+--     SET email_address = '12thcan.finance@gmail.com'
+-- where id = 3;
